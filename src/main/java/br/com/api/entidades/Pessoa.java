@@ -1,6 +1,8 @@
 package br.com.api.entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -9,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Pessoa {
@@ -22,6 +25,8 @@ public class Pessoa {
 	@JsonFormat
 	(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private LocalDate dataDeNascimento;
+	@OneToMany(mappedBy = "pessoa")
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@Deprecated
 	public Pessoa() {

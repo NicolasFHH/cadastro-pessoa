@@ -43,5 +43,13 @@ public class Pessoa {
 
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
-	}	
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setDataDeNascimento(LocalDate dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
 }

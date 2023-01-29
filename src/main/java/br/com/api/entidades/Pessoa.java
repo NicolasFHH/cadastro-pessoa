@@ -57,4 +57,22 @@ public class Pessoa {
 	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
+
+	public boolean encontraEndereco(long idEndereco) {
+		for (Endereco endereco : enderecos) {
+			if (endereco.getId() == idEndereco) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void marcaEnderecoPrincipal(long idEndereco) {
+		for (Endereco endereco : enderecos) {
+			if (endereco.getId() == idEndereco) {
+				endereco.setEnderecoPrincipal(true);
+			}
+		endereco.setEnderecoPrincipal(false);
+		}
+	}
 }

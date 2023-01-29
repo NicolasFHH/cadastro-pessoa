@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -54,7 +55,7 @@ public class PessoaController {
 	}
 	
 	@PutMapping("/{id}/atualiza-pessoa")
-	public ResponseEntity<PessoaResponse> atualizaPessoa(@PathVariable Long id, @RequestBody @Valid PessoaRequest pessoaRequest) {
+	public ResponseEntity<PessoaResponse> atualizaPessoa(@PathVariable long id, @RequestBody @Valid PessoaRequest pessoaRequest) {
 		Optional<Pessoa> possivelPessoa = pessoaRepository.findById(id);
 		if (possivelPessoa.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -66,4 +67,19 @@ public class PessoaController {
 		return ResponseEntity.ok().body(new PessoaResponse(pessoa));
 	}
 	
+	@PatchMapping("/{idPessoa}/id-pessoa/{idEndereco}/id-endereco)")
+	public ResponseEntity<PessoaResponse> variavel(@PathVariable long idPessoa, @PathVariable long idEndereco) {
+		Optional<Pessoa> possivelPessoa = pessoaRepository.findById(idPessoa);
+		if (possivelPessoa.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		Pessoa pessoa = possivelPessoa.get();
+		Boolean encontraEndereco = pessoa.encontraEndereco(idEndereco);
+		if (!encontraEndereco) {
+			return ResponseEntity.notFound().build();
+		}
+		pessoa.marcaEnderecoPrincipal(idEndereco);
+		pessoaRepository.save(pessoa);
+		return ResponseEntity.ok().body(new PessoaResponse(pessoa));
+	}
 }

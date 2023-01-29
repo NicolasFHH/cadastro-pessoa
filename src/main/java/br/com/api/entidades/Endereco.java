@@ -17,11 +17,11 @@ public class Endereco {
 	@Column(nullable = false)
 	private String logradouro;
 	@Column(nullable = false)
-	private String CEP;
+	private String cep;
 	@Column(nullable = false)
 	private Integer numero;
 	private String cidade;
-	private boolean enderecoPrincipal;
+	private boolean enderecoPrincipal = false;
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id")
 	private Pessoa pessoa;
@@ -30,13 +30,11 @@ public class Endereco {
 	public Endereco() {
 	}
 
-	public Endereco(String logradouro, String cEP, Integer numero, String cidade, boolean enderecoPrincipal,
-			Pessoa pessoa) {
+	public Endereco(String logradouro, String cep, Integer numero, String cidade, Pessoa pessoa) {
 		this.logradouro = logradouro;
-		CEP = cEP;
+		this.cep = cep;
 		this.numero = numero;
 		this.cidade = cidade;
-		this.enderecoPrincipal = enderecoPrincipal;
 		this.pessoa = pessoa;
 	}
 
@@ -49,7 +47,7 @@ public class Endereco {
 	}
 
 	public String getCEP() {
-		return CEP;
+		return cep;
 	}
 
 	public Integer getNumero() {
@@ -62,6 +60,10 @@ public class Endereco {
 
 	public boolean isEnderecoPrincipal() {
 		return enderecoPrincipal;
+	}
+	
+	public void setEnderecoPrincipal(boolean enderecoPrincipal) {
+		this.enderecoPrincipal = enderecoPrincipal;
 	}
 
 	public Pessoa getPessoa() {

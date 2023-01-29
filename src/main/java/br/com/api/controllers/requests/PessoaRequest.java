@@ -16,7 +16,6 @@ public class PessoaRequest {
 	private LocalDate dataDeNascimento;
 	
 	public PessoaRequest(@NotBlank String nome, @NotNull @Past LocalDate dataDeNascimento) {
-		super();
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
 	}

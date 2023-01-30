@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -63,24 +62,6 @@ public class PessoaController {
 		Pessoa pessoa = possivelPessoa.get();
 		pessoa.setNome(pessoaRequest.getNome());
 		pessoa.setDataDeNascimento(pessoaRequest.getDataDeNascimento());
-		pessoaRepository.save(pessoa);
-		return ResponseEntity.ok().body(new PessoaResponse(pessoa));
-	}
-	
-	@PatchMapping("/{idPessoa}/id-pessoa/{idEndereco}/id-endereco)")
-	public ResponseEntity<PessoaResponse> variavel(@PathVariable long idPessoa, @PathVariable long idEndereco) {
-		Optional<Pessoa> possivelPessoa = pessoaRepository.findById(idPessoa);
-		if (possivelPessoa.isEmpty()) {
-			System.out.println("pessoa não encontrada");
-			return ResponseEntity.notFound().build();
-		}
-		Pessoa pessoa = possivelPessoa.get();
-		Boolean encontraEndereco = pessoa.encontraEndereco(idEndereco);
-		if (!encontraEndereco) {
-			System.out.println("endereço não encontrado");
-			return ResponseEntity.notFound().build();
-		}
-		pessoa.marcaEnderecoPrincipal(idEndereco);
 		pessoaRepository.save(pessoa);
 		return ResponseEntity.ok().body(new PessoaResponse(pessoa));
 	}

@@ -17,8 +17,7 @@ public class EnderecoRequest {
 	@NotNull
 	private Long idPessoa;
 	
-	public EnderecoRequest(@NotBlank String logradouro, @NotBlank String cep, @NotBlank Integer numero, String cidade,
-			@NotNull Long idPessoa) {
+	public EnderecoRequest(String logradouro, String cep, Integer numero, String cidade, Long idPessoa) {
 		this.logradouro = logradouro;
 		this.cep = cep;
 		this.numero = numero;

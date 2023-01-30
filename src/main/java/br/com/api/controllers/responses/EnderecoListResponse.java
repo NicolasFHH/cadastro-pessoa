@@ -9,6 +9,7 @@ public class EnderecoListResponse {
 	private String cep;
 	private Integer numero;
 	private String cidade;
+	private boolean enderecoPrincipal;
 	
 	public EnderecoListResponse(Endereco endereco) {
 		this.id = endereco.getId();
@@ -16,6 +17,7 @@ public class EnderecoListResponse {
 		this.cep = endereco.getCEP();
 		this.numero = endereco.getNumero();
 		this.cidade = endereco.getCidade();
+		this.enderecoPrincipal = endereco.isEnderecoPrincipal();
 	}
 
 	public Long getId() {
@@ -36,5 +38,9 @@ public class EnderecoListResponse {
 
 	public String getCidade() {
 		return cidade;
+	}
+
+	public boolean isEnderecoPrincipal() {
+		return enderecoPrincipal;
 	}
 }

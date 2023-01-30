@@ -12,13 +12,13 @@ public class PessoaResponse {
 	private Long id;
 	private String nome;
 	private LocalDate dataDeNascimento;
-	private List<EnderecoListResponse> endereco = new ArrayList<>();
+	private List<EnderecoListResponse> enderecos = new ArrayList<>();
 	
 	public PessoaResponse(Pessoa pessoa) {
 		this.id = pessoa.getId();
 		this.nome = pessoa.getNome();
 		this.dataDeNascimento = pessoa.getDataDeNascimento();
-		this.endereco = pessoa.getEnderecos().stream().map(EnderecoListResponse::new).collect(Collectors.toList());
+		this.enderecos = pessoa.getEnderecos().stream().map(EnderecoListResponse::new).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -34,6 +34,6 @@ public class PessoaResponse {
 	}
 
 	public List<EnderecoListResponse> getEndereco() {
-		return endereco;
+		return enderecos;
 	}
 }

@@ -70,8 +70,9 @@ public class Pessoa {
 		for (Endereco endereco : enderecos) {
 			if (endereco.getId() == idEndereco) {
 				endereco.setEnderecoPrincipal(true);
+			} else {
+				endereco.setEnderecoPrincipal(false);
 			}
-		endereco.setEnderecoPrincipal(false);
 		}
 	}
 

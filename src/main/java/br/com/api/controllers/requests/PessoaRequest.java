@@ -15,7 +15,7 @@ public class PessoaRequest {
 	@Past
 	private LocalDate dataDeNascimento;
 	
-	public PessoaRequest(@NotBlank String nome, @NotNull @Past LocalDate dataDeNascimento) {
+	public PessoaRequest(String nome, LocalDate dataDeNascimento) {
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
 	}

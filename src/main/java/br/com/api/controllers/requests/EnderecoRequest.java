@@ -11,7 +11,7 @@ public class EnderecoRequest {
 	private String logradouro;
 	@NotBlank
 	private String cep;
-	@NotBlank
+	@NotNull
 	private Integer numero;
 	private String cidade;
 	@NotNull

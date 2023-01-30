@@ -33,7 +33,6 @@ public class Pessoa {
 	}
 	
 	public Pessoa(String nome, LocalDate dataDeNascimento) {
-		super();
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
 	}
@@ -74,5 +73,9 @@ public class Pessoa {
 			}
 		endereco.setEnderecoPrincipal(false);
 		}
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 }

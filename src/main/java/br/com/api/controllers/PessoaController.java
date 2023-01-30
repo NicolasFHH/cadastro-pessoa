@@ -71,11 +71,13 @@ public class PessoaController {
 	public ResponseEntity<PessoaResponse> variavel(@PathVariable long idPessoa, @PathVariable long idEndereco) {
 		Optional<Pessoa> possivelPessoa = pessoaRepository.findById(idPessoa);
 		if (possivelPessoa.isEmpty()) {
+			System.out.println("pessoa não encontrada");
 			return ResponseEntity.notFound().build();
 		}
 		Pessoa pessoa = possivelPessoa.get();
 		Boolean encontraEndereco = pessoa.encontraEndereco(idEndereco);
 		if (!encontraEndereco) {
+			System.out.println("endereço não encontrado");
 			return ResponseEntity.notFound().build();
 		}
 		pessoa.marcaEnderecoPrincipal(idEndereco);

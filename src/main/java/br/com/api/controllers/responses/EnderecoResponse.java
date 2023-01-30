@@ -1,40 +1,26 @@
 package br.com.api.controllers.responses;
 
-import br.com.api.entidades.Endereco;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import br.com.api.entidades.Pessoa;
 
 public class EnderecoResponse {
 	
-	private Long id;
-	private String logradouro;
-	private String cep;
-	private Integer numero;
-	private String cidade;
+	private String nomePessoa;
+	private List<EnderecoListResponse> enderecoResponse;
 	
-	public EnderecoResponse(Endereco endereco) {
-		this.id = endereco.getId();
-		this.logradouro = endereco.getLogradouro();
-		this.cep = endereco.getCEP();
-		this.numero = endereco.getNumero();
-		this.cidade = endereco.getCidade();
+	public EnderecoResponse(Pessoa pessoa) {
+		this.nomePessoa = pessoa.getNome();
+		this.enderecoResponse =
+				pessoa.getEnderecos().stream().map(EnderecoListResponse::new).collect(Collectors.toList());
 	}
 
-	public Long getId() {
-		return id;
+	public String getNomePessoa() {
+		return nomePessoa;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public String getCidade() {
-		return cidade;
+	public List<EnderecoListResponse> getEnderecoResponse() {
+		return enderecoResponse;
 	}
 }

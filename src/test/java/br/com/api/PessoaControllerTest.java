@@ -36,7 +36,7 @@ public class PessoaControllerTest {
 	}
 	
 	@Test
-	void naoDeveCriarPessoaSemNomeOuNulo() throws Exception {
+	void naoDeveCriarPessoaSemNomeOuEmBranco() throws Exception {
 		String pessoaDTO = "{\"nome\": \"\", \"dataDeNascimento\": \"1995-05-25\"}";
 		
 		mockMvc.perform(MockMvcRequestBuilders.post(uri).content(pessoaDTO).contentType(MediaType.APPLICATION_JSON))
